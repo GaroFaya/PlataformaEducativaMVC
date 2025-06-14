@@ -1,0 +1,47 @@
+# ----------------------------
+# Archivos de IDE y entornos
+# ----------------------------
+/.settings/
+/.classpath
+/.project
+/.idea/
+*.iml
+/nbproject/
+
+# ----------------------------
+# Build y dependencias
+# ----------------------------
+/bin/
+/build/
+/dist/
+/target/
+*.war
+*.ear
+*.jar
+/lib/       # Excluye la carpeta de librerías (pero documenta las dependencias en README.md)
+
+# ----------------------------
+# Base de datos y configuraciones sensibles
+# ----------------------------
+*.db        # Archivos de SQLite, H2, etc.
+*.h2.db
+*.mv.db
+/db/        # Carpeta con datos locales de DB
+/data/      # Datos generados por la app
+*.sql       # Excluye scripts SQL (a menos que sean de estructura)
+/persistence.xml  # Si usas JPA, evita subir config con credenciales
+
+# ----------------------------
+# Logs y archivos temporales
+# ----------------------------
+*.log
+*.tmp
+*.swp
+
+# ----------------------------
+# Configuraciones específicas
+# ----------------------------
+*.properties    # Evita subir configs con contraseñas (usa un template)
+*.env           # Variables de entorno
+/config/application-dev.yml  # Configs de desarrollo
+/keystore/      # Certificados SSL
