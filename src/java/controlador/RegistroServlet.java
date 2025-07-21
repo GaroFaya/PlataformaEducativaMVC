@@ -29,7 +29,7 @@ public class RegistroServlet extends HttpServlet {
         Usuario usuario = new Usuario();
         usuario.setNombre(nombre);
         usuario.setCorreo(correo);
-        usuario.setClave(dao.UsuarioDAO.encriptarSHA256(clave)); // Si tienes este método implementado
+        usuario.setClave(dao.UsuarioDAO.encriptarSHA256(clave)); 
         usuario.setRol(rol);
         usuario.setDni(dni);
         usuario.setFecha_nacimiento(fechaNacimiento);

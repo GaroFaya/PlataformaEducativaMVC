@@ -53,7 +53,7 @@
             <td><%= u.getRol() %></td>
             <td>
                 <a href="editarUsuario.jsp?id=<%= u.getId_usuario() %>">✏️ Editar</a> |
-                <a href="UsuarioServlet?accion=eliminar&id=<%= u.getId_usuario() %>">🗑 Eliminar</a>
+                <a href="../UsuarioServlet?accion=eliminar&id=<%= u.getId_usuario() %>">🗑 Eliminar</a>
             </td>
         </tr>
         <% } %>

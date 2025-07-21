@@ -21,7 +21,7 @@
             <h2>Hola, <%= session.getAttribute("nombre") %> 👨‍🏫</h2>
             <p>Gestiona tu contenido educativo:</p>
 
-            <a href="#">⬆️ Subir Videos</a>
+            <a href="subirContenido.jsp">⬆️ Subir Videos</a>
             <a href="#">📈 Ver Reportes</a>
             <a href="#">📚 Mis Cursos</a>
             <a href="../CerrarSesionServlet">🚪 Cerrar Sesión</a>
@@ -32,4 +32,10 @@
         Plataforma Educativa - IEP San Vicente de Motupe © 2025
     </footer>
 </body>
-</html>
+</html> quiero que al hacer clic en subir videos aparezca esto  <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page session="true" %>
+<%
+    if (session.getAttribute("rol") == null || !"docente".equals(session.getAttribute("rol"))) {
+        response.sendRedirect("../login.jsp");
+    }
+%>

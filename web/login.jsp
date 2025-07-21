@@ -20,7 +20,11 @@
             </div>
             <button type="submit" class="btn-login">Ingresar</button>
         </form>
-        <p class="login-footer">¿No tienes una cuenta? Contacta al administrador.</p>
+        <p>
+        <center style="display: flex; gap: 20px; justify-content: center;">
+            <a href="registro.jsp">Crea tu cuenta</a>
+            <a href="recuperarClave.jsp">Modificar contraseña</a>
+        </center>
     </div>
 </body>
 </html>

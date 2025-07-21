@@ -34,9 +34,6 @@ public class UsuarioDAO {
         return lista;
     }
 
-
-    
-
     // Actualizar usuario existente
     public static void actualizarUsuario(Usuario u) {
         try (Connection con = Conexion.conectar()) {
@@ -57,7 +54,6 @@ public class UsuarioDAO {
             e.printStackTrace();
         }
     }
-
 
     // Buscar usuario por ID (para editar)
     public static Usuario buscarPorId(int id) {
@@ -83,7 +79,6 @@ public class UsuarioDAO {
         }
         return u;
     }
-
 
     // Eliminar usuario por ID
     public static void eliminarUsuario(int id) {
@@ -127,8 +122,6 @@ public class UsuarioDAO {
         e.printStackTrace();
     }
 }
-
-
     
     public static void insertarUsuario(Usuario u) {
     try (Connection con = Conexion.conectar()) {
@@ -149,8 +142,7 @@ public class UsuarioDAO {
     }
 }
 
-
-    // Insertar nuevo usuario
+    //Encriptr clave
     public static String encriptarSHA256(String texto) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
