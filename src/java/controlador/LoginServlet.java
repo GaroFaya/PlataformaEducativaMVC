@@ -45,6 +45,10 @@ public class LoginServlet extends HttpServlet {
                 sesion.setAttribute("nombre", rs.getString("nombre"));
                 sesion.setAttribute("rol", rs.getString("rol"));
 
+                // ✅ NUEVO: Guardar grado y nivel del estudiante (útiles para filtrar cursos/videos)
+                sesion.setAttribute("grado", rs.getString("grado"));
+                sesion.setAttribute("nivel", rs.getString("nivel"));
+
                 String rol = rs.getString("rol");
                 if ("estudiante".equalsIgnoreCase(rol)) {
                     response.sendRedirect("vistas/panelEstudiante.jsp");

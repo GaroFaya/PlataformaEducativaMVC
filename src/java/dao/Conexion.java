@@ -9,10 +9,11 @@ public class Conexion {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/plataforma?useSSL=false&serverTimezone=UTC",
-                "root", // usuario de phpMyAdmin
-                ""      // contraseña en blanco si no la cambiaste en XAMPP
-            );
+            "jdbc:mysql://localhost:3306/plataforma?useSSL=false&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8",
+            "root",
+            ""
+        );
+
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("❌ Error de conexión: " + e.getMessage());
             return null;

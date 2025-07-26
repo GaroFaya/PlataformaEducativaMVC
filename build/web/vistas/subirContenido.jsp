@@ -5,6 +5,14 @@
         response.sendRedirect("../login.jsp");
     }
 %>
+
+<%@ page import="java.sql.*" %>
+<%
+    Connection con = dao.Conexion.conectar();
+    PreparedStatement ps = con.prepareStatement("SELECT id_curso, nombre FROM cursos ORDER BY nombre ASC");
+    ResultSet cursosRs = ps.executeQuery();
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,7 +72,7 @@
             <h2>Hola, <%= session.getAttribute("nombre") %> 👨‍🏫</h2>
             <p>Agrega nuevo material por curso y grado:</p>
 
-            <form action="../ContenidoServlet" method="post" enctype="multipart/form-data" class="formulario-contenido">
+            <form action="../ContenidoServlet" method="post" class="formulario-contenido">
                 <label>Título:</label>
                 <input type="text" name="titulo" required>
 
@@ -74,36 +82,43 @@
                 <label>Curso:</label>
                 <select name="curso_id" required>
                     <option value="">-- Selecciona --</option>
-                    <option value="1">Word Básico</option>
-                    <option value="2">Scratch Creativo</option>
+                    <%
+                        while (cursosRs.next()) {
+                            int idCurso = cursosRs.getInt("id_curso");
+                            String nombreCurso = cursosRs.getString("nombre");
+                    %>
+                        <option value="<%= idCurso %>"><%= nombreCurso %></option>
+                    <%
+                        }
+                        cursosRs.close();
+                        ps.close();
+                        con.close();
+                    %>
                 </select>
+
 
                 <label>Grado:</label>
                 <select name="grado" required>
-                    <option value="">-- Selecciona --</option>
-                    <option>1°</option>
-                    <option>2°</option>
-                    <option>3°</option>
-                    <option>4°</option>
-                    <option>5°</option>
-                    <option>6°</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
                 </select>
 
                 <label>Nivel:</label>
                 <select name="nivel" required>
-                    <option value="">-- Selecciona --</option>
                     <option>Primaria</option>
                     <option>Secundaria</option>
                 </select>
 
-                <label>Enlace externo (YouTube, Drive, etc.):</label>
-                <input type="url" name="link" placeholder="Opcional">
-
-                <label>Archivo (PDF o Video):</label>
-                <input type="file" name="archivo" accept=".mp4,.pdf">
+                <label>Enlace del video (YouTube, Drive, etc.):</label>
+                <input type="url" name="link" placeholder="https://..." required>
 
                 <button type="submit">📤 Publicar Contenido</button>
             </form>
+
 
             <br>
             <a href="panelDocente.jsp">⬅️ Volver al panel</a>
